@@ -4,7 +4,9 @@
       "root": "frontend/"
     },
     "backend": {
-      "root": "backend/"
+      "root": "backend/",
+      "framework": "express",
+      "entrypoint": "server.js"
     }
   },
   "rewrites": [
