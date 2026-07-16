@@ -12,12 +12,11 @@ const app = express();
 app.get('/api/test', (req, res) => {
   res.json({ message: "Hello from Express on Vercel!" });
 });
-// Standard middleware setup
+
 app.use(cors());
 app.use(express.json());
 
-// Bind Database Connection routine
-// In backend/server.js, add a middleware to ensure DB is connected before any routing happens
+
 app.use(async (req, res, next) => {
   try {
     await connectDB();
@@ -27,12 +26,12 @@ app.use(async (req, res, next) => {
   }
 });
 
-// Bind API Routing layers
+
 app.use('/api/instructors', instructorRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/schedules', scheduleRoutes);
 
-// Fallback Route handler
+
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint destination footprint requested does not exist' });
 });
