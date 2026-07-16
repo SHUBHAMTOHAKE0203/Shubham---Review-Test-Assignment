@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BASE_API = 'http://localhost:5000/api';
+const BASE_API = '/api';
 
 export default function AdminPanel() {
   const [instructors, setInstructors] = useState([]);
