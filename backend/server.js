@@ -17,7 +17,15 @@ app.use(cors());
 app.use(express.json());
 
 // Bind Database Connection routine
-connectDB();
+// In backend/server.js, add a middleware to ensure DB is connected before any routing happens
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).json({ error: "Database connection failed", details: err.message });
+  }
+});
 
 // Bind API Routing layers
 app.use('/api/instructors', instructorRoutes);
