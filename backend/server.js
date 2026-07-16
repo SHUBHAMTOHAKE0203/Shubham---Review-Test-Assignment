@@ -9,7 +9,9 @@ import scheduleRoutes from './routes/scheduleRoutes.js';
 dotenv.config();
 
 const app = express();
-
+app.get('/api/test', (req, res) => {
+  res.json({ message: "Hello from Express on Vercel!" });
+});
 // Standard middleware setup
 app.use(cors());
 app.use(express.json());
